@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { envConfig } from './config/env.config';
 import { DatabaseModule } from './database/database.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
     }),
     DatabaseModule,
     SharedModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
