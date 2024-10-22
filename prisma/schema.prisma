@@ -6,3 +6,24 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Role {
+  DISTRIBUTOR
+  ADMIN
+}
+
+enum AccountStatus {
+  ACTIVE
+  SUSPENDED
+}
+
+model User {
+  id String @id
+  name String
+  username String @unique
+  password String
+  role Role
+  status AccountStatus @default(ACTIVE)
+
+  @@map("users")
+}
