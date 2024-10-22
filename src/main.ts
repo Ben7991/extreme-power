@@ -17,6 +17,8 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Extreme Power')
     .setDescription('An api to handle business needs')
+    .addServer('http://localhost:4000', 'Local server')
+    .addServer('https://extreme-power.onrender.com', 'Online server')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);
