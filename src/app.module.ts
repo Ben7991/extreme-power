@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { envConfig } from './config/env.config';
 import { DatabaseModule } from './database/database.module';
+import { SharedModule } from './shared/shared.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { DatabaseModule } from './database/database.module';
       load: [envConfig],
     }),
     DatabaseModule,
+    SharedModule,
   ],
   controllers: [AppController],
   providers: [AppService],
