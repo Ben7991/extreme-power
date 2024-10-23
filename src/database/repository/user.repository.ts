@@ -57,7 +57,7 @@ export class UserRepository extends BaseRepository<User, string, UserProp> {
     const seedIncrement = 1;
     const initial = preferredRole === Role.ADMIN ? 'AD' : 'DIST';
     const suffixLength = 3;
-    const suffix = this.wordGenerator.generator(suffixLength);
+    const suffix = this.wordGenerator.generator(suffixLength).toUpperCase();
 
     return initial + (seed + seedIncrement + totalCount) + suffix;
   }
@@ -103,7 +103,7 @@ export class UserRepository extends BaseRepository<User, string, UserProp> {
 
     const user = await prisma.user.findFirst({
       where: {
-        id: value,
+        OR: [{ id: value }, { username: value }],
       },
     });
 
